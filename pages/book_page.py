@@ -1,4 +1,7 @@
+import time
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 from pages.my_books_page import MyBooksPage
@@ -32,6 +35,7 @@ class BookPage(BasePage):
 
     def succesful_add(self):
         self.add_book()
+        time.sleep(5)
         self.go_to_my_books()
         return MyBooksPage(self.driver)
 

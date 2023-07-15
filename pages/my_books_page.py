@@ -1,4 +1,7 @@
+import time
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 
@@ -8,6 +11,7 @@ class MyBooksPage(BasePage):
     NEW_BOOK = (By.XPATH, '//*[@title="Python Crash Course: A Hands-On, Project-Based Introduction to Programming"]')
     DELETE_BOOK = (By.XPATH, '//*[@data-confirm="Are you sure you want to remove Python Crash Course from your books? This will permanently remove this book from your shelves, including any review, rating, tags, or notes you have added. To change the shelf this book appears on please edit the shelves."]')
     CONFIRM_BUTTON = (By.XPATH, '// div[ @ role =“dialog”] // button[text() =“OK”]')
+    MESSAGE_CONTAINER = (By.ID, 'header_notice_container')
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -28,10 +32,18 @@ class MyBooksPage(BasePage):
     def confirm_delete(self):
         return self.element(MyBooksPage.CONFIRM_BUTTON)
 
+    @property
+    def notice_container(self):
+        return self.element(MyBooksPage.MESSAGE_CONTAINER)
+
     def delete_book(self):
         self.delete_book_locator.click()
 
     def confirm_delete(self):
         self.driver.switch_to.alert.accept()
-        self.confirm_delete.click()
 
+    def succesful_delete(self):
+        self.delete_book()
+        time.sleep(5)
+        self.confirm_delete()
+        return self

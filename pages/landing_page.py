@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
+from pages.my_books_page import MyBooksPage
 from pages.profile_page import ProfilePage
 from pages.book_page import BookPage
 
@@ -10,8 +11,7 @@ class LandingPage(BasePage):
     SITE_HEADER_PERSONAL = (By.XPATH, '/html/body/div[2]/div/header/div[2]/div/div[3]')
     SEARCH_FIELD = (By.XPATH, '/html/body/div[2]/div/header/div[2]/div/div[2]/form/input[1]')
     FOUND_BOOK = (By.XPATH, '/html/body/div[2]/div/header/div[2]/div/div[2]/form/div/div/div[1]/a/div/div[1]')
-
-
+    MY_BOOKS = (By.XPATH, '/html/body/div[2]/div/header/div[2]/div/nav/ul/li[2]/a')
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -27,6 +27,9 @@ class LandingPage(BasePage):
     def found_book(self):
         return self.element(LandingPage.FOUND_BOOK)
 
+    @property
+    def my_books(self):
+        return self.element(LandingPage.MY_BOOKS)
 
     def is_page_displayed(self):
         return self.site_header_personal.is_displayed()
@@ -45,3 +48,7 @@ class LandingPage(BasePage):
         self.search_book_input(book_n)
         self.select_book()
         return BookPage(self.driver)
+
+    def go_to_my_books(self):
+        self.my_books.click()
+        return MyBooksPage(self.driver)

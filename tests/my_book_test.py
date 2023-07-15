@@ -19,4 +19,9 @@ def test_succesful_add(login_page, valid_user, book_n):
     assert my_book_page.new_book_locator.is_displayed()
 
 
+def test_succesful_delete(login_page, valid_user):
+    page = login_page.successful_login(valid_user)
+    my_book_page = page.go_to_my_books()
+    my_book_page.succesful_delete()
 
+    assert my_book_page.notice_container.is_displayed()

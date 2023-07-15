@@ -7,5 +7,5 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    def element(self, locator, timeout=3):
+    def element(self, locator, timeout=5):
         return WebDriverWait(self.driver, timeout=timeout).until(EC.visibility_of_element_located(locator))
