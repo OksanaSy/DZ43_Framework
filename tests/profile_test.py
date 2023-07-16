@@ -1,12 +1,8 @@
 """
 Scenario Outline: Successful Edit Profile
+        After login
 	  When I click on "My Profile" link on the "Home" page
-	  And I fill in First Name as "<firstname>"
 	  And I fill in Middle Name as "<middlename>"
-	  And I fill in Last Name as "<lastname>"
-	  And I fill in Gender as "<gender>"
-	  And I fill in Zip as "<zip>"
-	  And I fill in City as "<city>"
 	  And I click on the "Update Profile" button
 	  Then I should land on the "Profile" page
 	  And I should see "success" message"

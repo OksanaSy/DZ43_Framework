@@ -1,5 +1,6 @@
 """
 Scenario Outline: Successful find the book
+        After login
 	  When I click on "Search books" field on the "Home" page
 	  And I fill in this field as "<bookname>"
 	  And I click on the "bookname" link in quick search results

@@ -11,7 +11,7 @@ class LoginPage(BasePage):
     EMAIL_INPUT_FIELD_LOCATOR = (By.ID, 'ap_email')
     PASSWORD_INPUT_FIELD_LOCATOR = (By.ID, 'ap_password')
     LOGIN_BUTTON_LOCATOR = (By.ID, 'signInSubmit')
-    ERROR_MESSAGE_LOCATOR=(By.ID,'auth-warning-message-box')
+    ERROR_MESSAGE_LOCATOR = (By.ID, 'auth-error-message-box')
 
     def __init__(self, driver):
         super().__init__(driver)
