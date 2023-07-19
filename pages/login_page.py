@@ -7,7 +7,7 @@ from pages.landing_page import LandingPage
 
 class LoginPage(BasePage):
     SIGNIN_REFERENCE = (By.XPATH, "//*[@id='signIn']/div/div/a")
-    SIGNIN_WITH_EMAIL_BUTTON = (By.XPATH, "//*[@id='choices']/div/a[4]/button")
+    SIGNIN_WITH_EMAIL_BUTTON = (By.XPATH, "//*[@id='choices']/div/a[5]/button")
     EMAIL_INPUT_FIELD_LOCATOR = (By.ID, 'ap_email')
     PASSWORD_INPUT_FIELD_LOCATOR = (By.ID, 'ap_password')
     LOGIN_BUTTON_LOCATOR = (By.ID, 'signInSubmit')
